@@ -176,8 +176,9 @@ vel=0;
     % BEGIN SIMULATION 
     %------------------
     fig = figure(1);
-    set(fig, 'Position',[50,1000,550,450]);
-	
+    % set(fig, 'Position',[50,1000,550,450]);
+	% fig = figure(1);
+    movegui(fig, 'center')
 
     % We run the simulation for 300 ms with aperiodic boundries and 
     % zero velocity to form the network, then we change the 
@@ -235,8 +236,8 @@ vel=0;
     % increment is the position in the trajectory data. start at 2 to compute velocity
     increment = 2;
     s = r;
-    set(fig,'Position',[50,1000,450,900]);
-
+    % set(fig,'Position',[50,1000,450,900]);
+    set(fig, 'Position', [100, 100, 600, 450])
 
     for iter=1: sampling_length  - 20      
         
@@ -289,7 +290,7 @@ vel=0;
 		r = s;
         	spikes{increment,1} = sparse(spike);
 		% Track a single neuron response
-        	sNeuronResponse(increment)  = full(spike{increment,1}(sNeuron(1),sNeuron(2)));
+        	sNeuronResponse(increment)  = full(spikes{increment,1}(sNeuron(1),sNeuron(2)));
 	end
 
 

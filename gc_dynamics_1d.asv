@@ -122,9 +122,8 @@ for t = 2:T/dt
             
             % 设置当前图形窗口位置
             set(gcf, 'Position', [left, bottom, fig_width, fig_height]);
-            % subplot(2,2,1), h1=plot(x_prefs,W_RR(:,N/2),'r'), hold on, h2=plot(x_prefs,W_LL(:,N/2),'b'),legend('right','left'), hold off, title('Intra Connections of Typical Neurons')
+            subplot(2,2,1), h1=plot(x_prefs,W_RR(:,N/2),'r'), hold on, h2=plot(x_prefs,W_LL(:,N/2),'b'),legend('right','left'), hold off, title('Intra Connections of Typical Neurons')
             % subplot(2,2,1), h1=plot(x_prefs,W_RR(N/2,:),'r'), hold on, h2=plot(x_prefs,W_LL(N/2,:),'b'),legend('right','left'), hold off, title('Intra Connections of Typical Neurons')
-            subplot(2,2,1), plot (x_prefs,G_L, 'r-'), hold on, plot (x_prefs,G_R, 'b-'), legend('G_L','G_R'), hold off; title('Conductance from Left and Right')
             subplot(2,2,2), plot(x_prefs,F(1:N)), hold off,  title('Population Response of Left Population');
             subplot(2,2,4), plot(x_prefs,F(N+1:2*N)), hold off,  title('Population Response of right Population');
             subplot(2,2,3), plot(x_prefs,exp(-(x_prefs - x(t)).^2/.001^2)/max(exp(-(x_prefs - x(t)).^2/.001^2)),'g'), hold off, title('Position')
