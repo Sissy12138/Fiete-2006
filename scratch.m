@@ -98,4 +98,33 @@ m = 4; % (每个时间步细分为4个子间隔)
 dt = 0.001; % (时间步长1ms)
 
 rm = repmat(F,1,m)
+%% 二维DoG
+n = 2^7; 
+% Neuron time-constant (in ms)
+tau = 5;
+dt = 0.5;
+% Envelope and Weight Matrix Parameters
+lambda = 13; % Equation (3)
+beta = 3/lambda^2; % Equation (3)
+alphabar = 5; % alphabar = gamma/beta from Equation (3) gamma和beta的比值=1.05
+abar = 1; % a should be <= alphabar^2. Equation (3)
+wtphase = 2; % wtphase is 'l' from Equation (2) 不对称权重单位
+alpha  = 1; % The velocity gain from Equation (4)
+useSpiking = 0;
+% Envelope and Weight Matrix parameters
+x = -n/2:1:n/2-1; 
+% 神经元数量
+lx=length(x);
+xbar=sqrt(beta)*x;
+filt = abar*exp(-alphabar*(ones(lx,1)*xbar.^2+xbar'.^2*ones(1,lx)))...
+   -exp(-1*(ones(lx,1)*xbar.^2+xbar'.^2*ones(1,lx)));  
 
+% 子图1：三维曲面
+% subplot(1,3,1);
+surf(x, x, filt, 'EdgeColor', 'none');
+title('二维DoG滤波器 - 三维视图');
+xlabel('X位置'); ylabel('Y位置'); zlabel('幅度');
+colorbar;
+colormap(jet);
+axis tight;
+%%

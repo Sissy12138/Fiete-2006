@@ -1,9 +1,22 @@
-function [spikes] = gc_periodic(filename,n,tau,dt,beta,alphabar,abar,wtphase,alpha,useSpiking)
+
 %-----------------------------------
 % Grid Cell Dynamics - Periodic
 %-----------------------------------
+filename = '';
+% Number of neurons
+n = 2^7; 
 
-
+% Neuron time-constant (in ms)
+tau = 5;
+dt = 0.5;
+% Envelope and Weight Matrix Parameters
+lambda = 13; % Equation (3)
+beta = 3/lambda^2; % Equation (3)
+alphabar = 1.05; % alphabar = gamma/beta from Equation (3) gamma和beta的比值=1.05
+abar = 1; % a should be <= alphabar^2. Equation (3)
+wtphase = 2; % wtphase is 'l' from Equation (2) 不对称权重单位
+alpha  = 1; % The velocity gain from Equation (4)
+useSpiking = 0;
 %---------------------
 % LOAD AND CLEAN DATA
 %---------------------
@@ -254,8 +267,9 @@ vel=0;
 
         % Break feedforward input into its directional components
         % Equation (4) 
-        rfield = venvelope.*((1+alpha*vel*right)*typeR+(1+alpha*vel*left)*typeL+(1+alpha*vel*up)*typeU+(1+alpha*vel*down)*typeD);    
-        
+        % 计算各个方向的速度的分量
+        % rfield = venvelope.*((1+alpha*vel*right)*typeR+(1+alpha*vel*left)*typeL+(1+alpha*vel*up)*typeU+(1+alpha*vel*down)*typeD);    
+        rfield = venvelope.*((5+alpha*vel*right)*typeR+(5+alpha*vel*left)*typeL+(5+alpha*vel*up)*typeU+(5+alpha*vel*down)*typeD);
         % Convolute population activity with shifted semmetric weights.
         % real() is implemented for octave compatibility
         convolution = real(ifft2( ...
@@ -323,10 +337,4 @@ vel=0;
             axis([min(position_x),max(position_x),min(position_y),max(position_y)]);
             drawnow;
         end
-    end        
-
-    
-  
-
-end
-
+    end       

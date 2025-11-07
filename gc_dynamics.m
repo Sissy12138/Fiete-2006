@@ -41,10 +41,10 @@ tau = 5;
 % Envelope and Weight Matrix Parameters
 lambda = 13; % Equation (3)
 beta = 3/lambda^2; % Equation (3)
-alphabar = 1.05; % alphabar = gamma/beta from Equation (3) gamma和beta的比值=1.05
+alphabar = 2.05; % alphabar = gamma/beta from Equation (3) gamma和beta的比值=1.05
 abar = 1; % a should be <= alphabar^2. Equation (3)
 wtphase = 2; % wtphase is 'l' from Equation (2) 不对称权重单位
-alpha  = 5; % The velocity gain from Equation (4)
+alpha  = 2; % The velocity gain from Equation (4)
 
 %---------------
 % RUN SIMULATION
