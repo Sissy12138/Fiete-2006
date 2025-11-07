@@ -1,4 +1,5 @@
-Please cite "Y. Burak and I. R. Fiete. Accurate path integration in continuous attractor network models of grid cells. PLoS Comp. Biol. 5(2) (2009)" If this code is used. 
+Please cite "Y. Burak and I. R. Fiete. Accurate path integration in continuous attractor network models of grid cells. PLoS Comp. Biol. 5(2) (2009)" If this code is used. <br>
+Notion 笔记：https://www.notion.so/Burak-Fiete-2009-280ca7f3face81f2ba8cd04dee126334?source=copy_link   <br>
 
 
 ## ASSOCIATED FILES 
